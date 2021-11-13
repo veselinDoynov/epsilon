@@ -14,6 +14,22 @@ class BaseEpsilonService
         $this->epsilonClient = $epsilonClient;
     }
 
+    public function executeService($service, $id = null)
+    {
+        $response = $this->validateToken();
+        if(!empty($response['errors']))
+        {
+            return $response;
+        }
+
+        if($id)
+        {
+            return $this->epsilonClient->{$service}($id, $response['response']['access_token']);
+        }
+
+        return $this->epsilonClient->{$service}($response['response']['access_token']);
+    }
+
     public function validateToken(): array
     {
         $token = $this->epsilonClient->getAccessToken();
