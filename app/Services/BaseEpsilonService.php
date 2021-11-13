@@ -1,16 +1,14 @@
 <?php
 
-
 namespace App\Services;
-
 
 use Illuminate\Http\Response;
 
 class BaseEpsilonService
 {
-    public function validateToken(): array
+    public function validateToken(EpsilonClient $epsilonClient): array
     {
-        $token = $this->epsilonClient->getAccessToken();
+        $token = $epsilonClient->getAccessToken();
         if($token['statusCode'] != Response::HTTP_OK)
         {
             if($token['statusCode'] == Response::HTTP_UNAUTHORIZED)

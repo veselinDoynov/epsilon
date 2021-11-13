@@ -2,9 +2,6 @@
 
 namespace App\Services;
 
-
-use Illuminate\Http\Response;
-
 class EpsilonService extends BaseEpsilonService
 {
     /** @var EpsilonClient */
@@ -17,7 +14,7 @@ class EpsilonService extends BaseEpsilonService
 
     public function listServices()
     {
-        $errors = $this->validateToken();
+        $errors = $this->validateToken($this->epsilonClient);
         if($errors)
         {
             return $errors;
@@ -28,7 +25,7 @@ class EpsilonService extends BaseEpsilonService
 
     public function getService(int $id)
     {
-        $errors = $this->validateToken();
+        $errors = $this->validateToken($this->epsilonClient);
         if($errors)
         {
             return $errors;
