@@ -12,7 +12,7 @@
 </head>
 <body class="container">
 <h1> Service detail page </h1>
-
+<a href="/services" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Back to listing</a>
 @if(!empty($data['errors']))
     @foreach($data['errors'] as $errorKey => $errorMessage)
         <p style="color:darkred"> {{$errorKey}}
@@ -22,7 +22,7 @@
     <!- General data -->
     <h3>General details:  <i><strong>{{$data['name']}}</strong></i></h3>
     <br/>
-    <table class="table table-striped table-dark table-bordered">
+    <table class="table table-hover table-dark">
         <thead>
         <tr>
             <th scope="col">#</th>
@@ -54,7 +54,7 @@
     <!- Port data -->
     <h3>Port:  <i><strong>{{$data['port']['name']}}</strong></i></h3>
     <br/>
-    <table class="table table-striped table-dark table-bordered">
+    <table class="table table-hover table-dark">
         <thead>
         <tr>
             <th scope="col">#</th>
@@ -83,7 +83,7 @@
                 {{$data['port']['throughput']}}
             </td>
             <td>
-                <table class="table table-striped table-dark table-bordered">
+                <table class="table table-hover table-dark">
                     <thead>
                     <tr>
                         <th scope="col">Region name</th>
@@ -95,7 +95,7 @@
                 </table>
             </td>
             <td>
-                <table class="table table-striped table-dark table-bordered">
+                <table class="table table-hover table-dark">
                     <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -118,7 +118,7 @@
     <br/>
     @foreach($data['statistics'] as $statisticName => $statisticData)
         <h3> {{$statisticName}} </h3>
-        <table class="table table-striped table-dark table-bordered">
+        <table class="table table-hover table-dark">
             <thead>
             <tr>
                 <th scope="col">Name</th>

@@ -9,6 +9,14 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    <style>
+        table tr>td.service{
+            color:cadetblue;
+            font-size: small;
+            font-weight:normal;
+            font-family: Dialog;
+        }
+    </style>
 </head>
 <body class="container">
 <h1> List services Page </h1>
@@ -21,8 +29,8 @@
 @else
     <h3>Services</h3>
     <br/>
-    <table class="table table-striped table-dark table-bordered">
-        <thead>
+    <table class="table table-hover">
+        <thead class="table-dark">
         <tr>
             <th scope="col">#</th>
             <th scope="col">Name</th>
@@ -33,12 +41,10 @@
         </thead>
         @foreach($data as $service)
             @foreach($service as $serviceEntity)
-                <tr>
+                <tr style="cursor: pointer;"  onclick="window.open('/services/{{$serviceEntity['id']}}', '_blank');">
                     <td>{{$serviceEntity['id']}}</td>
-                    <td>
-                        <a class="btn btn-primary" target="_blank" href="/services/{{$serviceEntity['id']}}" role="button" aria-expanded="false" aria-controls="collapseExample">
-                            {{$serviceEntity['name']}}
-                        </a>
+                    <td class="service">
+                        <strong>{{$serviceEntity['name']}}</strong>
                     </td>
                     <td>{{$serviceEntity['bandwidth']}}</td>
                     <td>{{$serviceEntity['type']}}</td>
