@@ -3,12 +3,13 @@ In you root directory:
 Create .env from .env.example
 
 Set proper values for this env variables:
-EPSILON__BASE_URL=
-EPSILON_CLIENT_ID=
-EPSILON_CLIENT_SECRET= 
 
-Run: composer install
-Run: php artisan serve
+</p>EPSILON__BASE_URL=</p>
+<p>EPSILON_CLIENT_ID=</p>
+<p>EPSILON_CLIENT_SECRET= </p>
+
+<p>Run: composer install</p>
+<p>Run: php artisan serve</p>
 
 It will start: http://127.0.0.1:8000
 
