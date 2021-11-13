@@ -4,17 +4,9 @@ namespace App\Services;
 
 class EpsilonService extends BaseEpsilonService
 {
-    /** @var EpsilonClient */
-    protected $epsilonClient;
-
-    public function __construct(EpsilonClient $epsilonClient)
-    {
-        $this->epsilonClient = $epsilonClient;
-    }
-
     public function listServices()
     {
-        $errors = $this->validateToken($this->epsilonClient);
+        $errors = $this->validateToken();
         if($errors)
         {
             return $errors;
@@ -25,7 +17,7 @@ class EpsilonService extends BaseEpsilonService
 
     public function getService(int $id)
     {
-        $errors = $this->validateToken($this->epsilonClient);
+        $errors = $this->validateToken();
         if($errors)
         {
             return $errors;

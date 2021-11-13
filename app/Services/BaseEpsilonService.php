@@ -6,9 +6,17 @@ use Illuminate\Http\Response;
 
 class BaseEpsilonService
 {
-    public function validateToken(EpsilonClient $epsilonClient): array
+    /** @var EpsilonClient */
+    protected $epsilonClient;
+
+    public function __construct(EpsilonClient $epsilonClient)
     {
-        $token = $epsilonClient->getAccessToken();
+        $this->epsilonClient = $epsilonClient;
+    }
+
+    public function validateToken(): array
+    {
+        $token = $this->epsilonClient->getAccessToken();
         if($token['statusCode'] != Response::HTTP_OK)
         {
             if($token['statusCode'] == Response::HTTP_UNAUTHORIZED)
