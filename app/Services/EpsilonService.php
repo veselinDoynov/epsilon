@@ -6,23 +6,23 @@ class EpsilonService extends BaseEpsilonService
 {
     public function listServices()
     {
-        $errors = $this->validateToken();
-        if($errors)
+        $response = $this->validateToken();
+        if(!empty($response['errors']))
         {
-            return $errors;
+            return $response;
         }
 
-        return $this->epsilonClient->getServices();
+        return $this->epsilonClient->getServices($response['response']['access_token']);
     }
 
     public function getService(int $id)
     {
-        $errors = $this->validateToken();
-        if($errors)
+        $response = $this->validateToken();
+        if(!empty($response['errors']))
         {
-            return $errors;
+            return $response;
         }
 
-        return $this->epsilonClient->getService($id);
+        return $this->epsilonClient->getService($id, $response['response']['access_token']);
     }
 }

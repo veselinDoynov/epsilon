@@ -12,13 +12,14 @@
 </head>
 <body class="container">
 <h1> Service detail page </h1>
-<a href="/services" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Back to listing</a>
+
 @if(!empty($data['errors']))
     @foreach($data['errors'] as $errorKey => $errorMessage)
         <p style="color:darkred"> {{$errorKey}}
             : {{is_array($errorMessage) ? implode(',',$errorMessage) : $errorMessage}}</p>
     @endforeach
 @else
+    <a href="/services" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Back to listing</a>
     <!- General data -->
     <h3>General details:  <i><strong>{{$data['name']}}</strong></i></h3>
     <br/>

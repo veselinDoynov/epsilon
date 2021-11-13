@@ -53,14 +53,8 @@ class EpsilonClient
 
     }
 
-    public function getServices(): ?array
+    public function getServices(string $token): ?array
     {
-        $token = $this->getAccessToken()['response']['access_token'] ?? null;
-
-        if (!$token) {
-            return null;
-        }
-
         $headers = array_merge(self::API_HEADERS, ['Authorization' => 'Bearer ' . $token]);
 
         $response = Http::withHeaders($headers)
@@ -71,14 +65,8 @@ class EpsilonClient
         return $result ?? [];
     }
 
-    public function getService(int $id): ?array
+    public function getService(int $id, string $token): ?array
     {
-        $token = $this->getAccessToken()['response']['access_token'] ?? null;
-
-        if (!$token) {
-            return null;
-        }
-
         $headers = array_merge(self::API_HEADERS, ['Authorization' => 'Bearer ' . $token]);
 
         $response = Http::withHeaders($headers)

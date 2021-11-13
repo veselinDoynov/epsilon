@@ -26,6 +26,6 @@ class BaseEpsilonService
             return ['errors' => $token['response']['errors']];
         }
 
-        return [];
+        return $token;
     }
 }
